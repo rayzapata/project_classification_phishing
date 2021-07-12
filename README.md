@@ -1,5 +1,5 @@
-Using URL Composition to Predict Phishing Attempts
-===
+## Using URL Composition to Predict Phishing Attempts
+---
 
 ![](https://github.com/ray-zapata/project_classification_phishing/blob/main/assets/logo.jpg)
 
@@ -164,6 +164,7 @@ Following acquisition of CSV from Kaggle, linked above, the DataFrames used in t
 
 The created modules used in this project below contain full comments an docstrings to better understand their operation. Where applicable, all functions used `random_state=19` at all times.
 
+- [`acquire`](https://raw.githubusercontent.com/ray-zapata/project_classification_phishing/main/acquire.py): contains functions used in initial data acquisition leading into the prepare phase
 - [`prepare`](https://raw.githubusercontent.com/ray-zapata/project_classification_phishing/main/prepare.py): contains functions used to prepare data for exploration and visualization
 - [`explore`](https://raw.githubusercontent.com/ray-zapata/project_classification_phishing/main/explore.py): contains functions to visualize the prepared data and estimate the best drivers of property value
 - [`model`  ](https://raw.githubusercontent.com/ray-zapata/project_classification_phishing/main/model.py): contains functions to create, test models and visualize their performance
@@ -171,6 +172,6 @@ The created modules used in this project below contain full comments an docstrin
 ### VI. Project Reproduction
 ---
 
-The steps documented in the above process are key to project reproduction. Using the CSV from the Kaggle link in Section III, there is minimal preparation needed to recreate the above findings, using the rename dictionary within the notebook to follow the code contained therein. When using the above modules, ensure full reading of docstrings and comments to understand function purpose and scope. 
+To being reproducing the results in this project, you must first obtain the CSV file found on [Kaggle](https://www.kaggle.com/shashwatwork/phishing-dataset-for-machine-learning). The steps documented in the above process are key to project reproduction. There is minimal preparation needed to recreate the above findings, using the wrangle function to drop columns and rename retained once you've obtained the data file. When using the above modules, ensure full reading of docstrings and comments to understand function purpose and scope. 
 
 [[Return to Top]](#using-url-composition-to-predict-phishing-attempts)
