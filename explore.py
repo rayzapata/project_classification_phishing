@@ -33,6 +33,9 @@ def elbow_plot(df, col_list):
 
     '''
 
+    # scale data for distance in kmeans
+    scaler = StandardScaler()
+    df_scaled = scaler.fit_transform(df[col_list])
     # set figure parameters
     plt.figure(figsize=(30, 15))
     # create series and apply increasing k values to test for inertia
@@ -56,6 +59,9 @@ def explore_clusters(df, col_list, k=2):
 
     '''
 
+    # scale data for distance in kmeans
+    scaler = StandardScaler()
+    df_scaled = scaler.fit_transform(df[col_list])
     # create kmeans object
     kmeans = KMeans(n_clusters=k, random_state=19)
     # fit kmeans
@@ -561,7 +567,7 @@ p-value: {p:.1g}''')
     print(f'''
                        ** Observed **                        |       ** Expected **
                        --------------------------------------|--------------------------------------
-                                     No Churn    Churn       |                     No Churn    Churn
+                                     Negative    Positive    |                     Negative     Positive
                                                              |       
                        No Fiber      {a:<10.0f}  {b:<10.0f}  |       No Fiber      {a2:<10.0f}  {b2:<10.0f}
                                                              |       
