@@ -48,18 +48,18 @@ One of the biggest internal problems with any company relying on electronic comm
 - Jupyter [notebook](https://nbviewer.jupyter.org/github/ray-zapata/project_classification_phishing/blob/main/phishing_report.ipynb) containing findings, summary, and process through data science pipeline
 - Trello [board](https://trello.com/b/Zl97PmXz/phishing-classification) demonstrating process and planning
 - This [README](#using-url-composition-to-predict-phishing-attempts) containing project summary, goals, and findings
-- Project summary for resumé and portfolio
+- Project summary for résumé and portfolio
 
 ### II. Project Summary
 ---
 
 #### 1. Goals
 
-The goal of this project is to create a classification model that is capable of maximizing the capture of phishing attempts utilizing only the composition of a Universal Resource Locator (URL), also known colloquially as a web address, while minimizing instances of false negatives that may result in productivity loss.
+The goal of this project is to create a classification model that is capable of maximizing the capture of phishing attempts utilizing only the composition of a Universal Resource Locator (URL), also known colloquially as a web address, while minimizing instances of false positives that may result in productivity loss.
 
 #### 2. Initial Thoughts & Hypothesis
 
-Throughout the initial phases of this project, the working hypothesis was that the length in characters and the count of special characters, such as dots (`.`) and hyphens (`-`), would be a strong use in phishing predictions. Annecdotal evidence suggests phishing attempts most frequently make use of subdomains and high path levels to mask the underlying hostname as a legitimate source (i.e. `http://https.apple.com.nz/apple-id-password/&2993%?dds99kdjf`)
+Throughout the initial phases of this project, the working hypothesis was that the length in characters and the count of special characters, such as dots (`.`) and hyphens (`-`), would be a strong use in phishing predictions. Anecdotal evidence suggests phishing attempts most frequently make use of subdomains and high path levels to mask the underlying hostname as a legitimate source (i.e. `http://https.apple.com.nz/apple-id-password/&2993%?dds99kdjf`)
 
 #### 3. Findings & Next Phase
 
@@ -100,7 +100,7 @@ Following acquisition of CSV from Kaggle, linked above, the DataFrames used in t
 | path_level            | count of path levels in URL                        |   int64   |
 | query_length          | length of all queries in URL                       |   int64   |
 | subdomain_level       | count of subdomain levels in URL                   |   int64   |
-| url_char_length       | numeric length of overal URL                       |   int64   |
+| url_char_length       | numeric length of overall URL                      |   int64   |
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  * Target variable
 
@@ -171,6 +171,6 @@ The created modules used in this project below contain full comments an docstrin
 ### VI. Project Reproduction
 ---
 
-The steps documented in the above process are key to project reproduction. Using the CSV from the Kaggle link in Section III, there is minimal preparation needed to recreate the above findings, using the rename dictionary within the notebook to follow the code contained therin. When using the above modules, ensure full reading of docstrings and comments to understand function purpose and scope. 
+The steps documented in the above process are key to project reproduction. Using the CSV from the Kaggle link in Section III, there is minimal preparation needed to recreate the above findings, using the rename dictionary within the notebook to follow the code contained therein. When using the above modules, ensure full reading of docstrings and comments to understand function purpose and scope. 
 
 [[Return to Top]](#using-url-composition-to-predict-phishing-attempts)
