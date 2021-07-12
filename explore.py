@@ -133,7 +133,7 @@ def target_heat(df, target, method='pearson'):
     plt.show()
 
 
-def plot_univariate(data, variable):
+def plot_univariate(data, variable, hue=None):
     '''
 
     This function takes the passed DataFrame the requested and plots a
@@ -145,27 +145,27 @@ def plot_univariate(data, variable):
     plt.figure(figsize=(30,8))
     # start subplot 1 for boxenplot
     plt.subplot(1, 2, 1)
-    sns.boxenplot(x=variable, data=data)
+    sns.boxenplot(x=variable, data=data, hue=hue)
     plt.axvline(data[variable].median(), color='pink')
     plt.axvline(data[variable].mean(), color='red')
     plt.xlabel('')
     plt.title('Enchanced Box Plot', fontsize=25)
     # start subplot 2 for displot
     plt.subplot(1, 2, 2)
-    sns.histplot(data=data, x=variable, element='step', kde=True, color='cyan',
-                                line_kws={'linestyle':'dashdot', 'alpha':1})
-    plt.axvline(data[variable].median(), color='pink')
-    plt.axvline(data[variable].mean(), color='red')
+    sns.histplot(data=data, x=variable, hue=hue, element='step', color='cyan',
+                                  line_kws={'linestyle':'dashdot', 'alpha':1})
+    plt.axvline(data[variable].median(), color='pink', alpha=0.5)
+    plt.axvline(data[variable].mean(), color='red', alpha=0.5)
     plt.xlabel('')
     plt.ylabel('')
-    plt.title('Distribution', fontsize=20)
+    plt.title('Distribution', fontsize=25)
     # set layout and show plot
-    plt.suptitle(f'{variable} $[n = {data[variable].count():,}]$', fontsize=25)
+    plt.suptitle(f'{variable} $[n = {data[variable].count():,}]$', fontsize=30)
     plt.tight_layout()
     plt.show()
 
 
-def plot_discrete_to_continous(data, discrete_var, continous_var, hue=None,
+def plot_multivariate(data, x, y, hue=None,
                             swarm_n=2000, r_type='pearson', random_state=19):
     '''
 
@@ -178,30 +178,30 @@ def plot_discrete_to_continous(data, discrete_var, continous_var, hue=None,
 
     # choose coefficient
     if r_type == 'pearson':
-        r = pearsonr(data[discrete_var], data[continous_var])[0]
+        r = pearsonr(data[x], data[y])[0]
     elif r_type =='spearman':
-        r = spearmanr(data[discrete_var], data[continous_var])[0]
+        r = spearmanr(data[x], data[y])[0]
     # set figure dimensions
     plt.figure(figsize=(30,10))
     # start subplot 1 for boxplot
     plt.subplot(1, 3, 1)
-    sns.boxenplot(x=discrete_var, y=continous_var, data=data)
+    sns.boxenplot(x=x, y=y, data=data, hue=hue)
     plt.xlabel('')
-    plt.ylabel(f'{continous_var}', fontsize=20)
+    plt.ylabel(f'{y}', fontsize=20)
     # start subplot 2 for boxplot
     plt.subplot(1, 3, 2)
-    sns.swarmplot(x=discrete_var, y=continous_var, data=data.sample(n=swarm_n,
-                                                    random_state=random_state))
-    plt.xlabel(f'{discrete_var}', fontsize=20)
+    sns.swarmplot(x=x, y=y, data=data.sample(n=swarm_n,
+                    random_state=random_state), hue=hue)
+    plt.xlabel(f'{x}', fontsize=20)
     plt.ylabel('')
     # start subplot 3 for boxplot
     plt.subplot(1, 3, 3)
-    sns.regplot(x=discrete_var, y=continous_var, data=data, marker='*',
-                                                    line_kws={'color':'red'})
+    sns.regplot(x=x, y=y, data=data, marker='*',
+                                line_kws={'color':'red'})
     plt.xlabel('')
     plt.ylabel('')
     # set title for graphic and output
-    plt.suptitle(f'{discrete_var} to {continous_var} $[r = {r:.2f}]$',
+    plt.suptitle(f'{x} to {y} $[r = {r:.2f}]$',
                                                                 fontsize=25)
     plt.tight_layout()
     plt.show()
@@ -495,16 +495,18 @@ def two_sample_ttest(a, b, alpha=0.05, equal_var=True,
     print(f'''
   alpha: {alpha}
 p-value: {p:.1g}''')
-    # print if our p-value is less than our significance level
+    # print if  p-value is less than significance level
     if p < alpha:
         print(f'''
-        Due to our p-value of {p:.1g} being less than our significance level of {alpha}, we must reject the null hypothesis
+        Due to p-value {p:.1g} being less than significance level {alpha}, \
+        may reject the null hypothesis
         that {null_hyp}.
         ''')
-    # print if our p-value is greater than our significance level
+    # print if  p-value is greater than significance level
     else:
         print(f'''
-        Due to our p-value of {p:.1g} being less than our significance level of {alpha}, we fail to reject the null hypothesis
+        Due to p-value {p:.1g} being less than significance level {alpha}, \
+        fail to reject the null hypothesis
         that {null_hyp}.    
         ''')
 
@@ -602,17 +604,19 @@ def chi_test_lite(cat, target, alpha=0.05):
     print(f'''
   alpha: {alpha}
 p-value: {p:.1g}''')
-    # print if our p-value is less than our significance level
+    # print if  p-value is less than significance level
     if p < alpha:
         print(f'''
-        Due to our p-value of {p:.1g} being less than our significance level of {alpha}, we must reject the null hypothesis
+        Due to p-value {p:.1g} being less than significance level {alpha}, \
+        may reject the null hypothesis
         that {null_hyp}.
         ''')
-    # print if our p-value is greater than our significance level
+    # print if  p-value is greater than significance level
     else:
         print(f'''
-        Due to our p-value of {p:.1g} being less than our significance level of {alpha}, we fail to reject the null hypothesis
-        that {null_hyp}.
+        Due to p-value {p:.1g} being less than significance level {alpha}, \
+        fail to reject the null hypothesis
+        that {null_hyp}.    
         ''')
 
 
