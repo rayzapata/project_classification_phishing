@@ -50,6 +50,10 @@ One of the biggest internal problems with any company relying on electronic comm
 - This [README](#using-url-composition-to-predict-phishing-attempts) containing project summary, goals, and findings
 - Project summary for résumé and portfolio
 
+In addition to the above deliverables, a web app was created for use the the [Streamlit](https://streamlit.io) platform that is awaiting deployment. Once that app is live, this section will be updated. Below is a visual demonstration of the app in use.
+
+![](https://github.com/ray-zapata/project_classification_phishing/blob/main/assets/streamlit_test.gif)
+
 ### II. Project Summary
 ---
 
