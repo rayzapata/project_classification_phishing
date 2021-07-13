@@ -65,7 +65,7 @@ def url_parse():
     '''
     
     # request input of URL
-    url = st.text_input('\nEnter a URL here:  ')
+    url = st.text_input('Enter URL')
     # parse needed information from url and assign to variabls
     _, hostname, path, _, query, _ = urlparse(url)
     
@@ -239,20 +239,24 @@ def predict_url_input():
     prob = model.predict_proba(new_obs_df)
     # print statement of predicted legitimacy and likelihood
     st.text('')
-    if pred == 0:
-        st.text(f'The URL provided is predicted {prob[0][0]:.0%} likely to be \
-legitimate.')
-        if prob[0][0] >= 0.75:
-            st.text('The URL doesn\'t seem suspicious, but use your best judgment.')
-        elif prob[0][0] >= 0.5:
-            st.text('Feels pretty safe, but proceed with care.')
+    if url == '':
+        pass
     else:
-        st.text(f'The URL provided is {prob[0][1]:.0%} suspected of being \
+        if pred == 0:
+            st.text(f'The URL provided is predicted {prob[0][0]:.0%} likely \
+to be legitimate.')
+            if prob[0][0] >= 0.75:
+                st.text('It doesn\'t seem suspicious, but use your best \
+judgment.')
+            elif prob[0][0] >= 0.5:
+                st.text('Feels pretty safe, but proceed with care.')
+        else:
+            st.text(f'The URL provided is {prob[0][1]:.0%} suspected of being \
 illegitimate')
-        if prob[0][1] >= 0.75:
-            st.text('No good waits on the other side of this.')
-        elif prob[0][1] >= 0.5:
-            st.text('Best be cautious and not visit this site.')
+            if prob[0][1] >= 0.75:
+                st.text('No good waits on the other side of this.')
+            elif prob[0][1] >= 0.5:
+                st.text('Best be cautious and not visit this site.')
 
 
 #################### Begin Web Portal Interface ####################
@@ -264,14 +268,17 @@ st.image('https://raw.githubusercontent.com/ray-zapata/project_classification_ph
 # begin function
 predict_url_input()
 
-# page breaks
+# page breaks because I don't quite know a better way yet
 components.html('')
 components.html('')
 components.html('')
-
-#disclaimer
-st.text('* For Entertainment Purposes Only')
 
 # github repo link
 link = '[GitHub](https://github.com/ray-zapata/project_classification_phishing)'
 st.markdown(link, unsafe_allow_html=True)
+
+#disclaimer
+st.text('''
+* For entertainment purposes only, does not claim to prevent
+  or treat any computer illness or ensure personal security.
+  ''')
