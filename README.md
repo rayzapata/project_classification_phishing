@@ -50,9 +50,9 @@ One of the biggest internal problems with any company relying on electronic comm
 - This [README](#using-url-composition-to-predict-phishing-attempts) containing project summary, goals, and findings
 - Project summary for résumé and portfolio
 
-In addition to the above deliverables, a web app was created for use on the [Streamlit](https://streamlit.io) platform that is awaiting deployment. Once that app is live, this section will be updated. Below is a visual demonstration of the app in use.
+In addition to the above deliverables, a web app was created to demonstrate how effective the classifier could be in the field. This is a simple proof of concept, and with additional time may be expanded on to use domains known to be used in phishing schemes. This does not serve as a layer of protection, and should in no way be used as secruity measure.
 
-![](https://github.com/ray-zapata/project_classification_phishing/blob/main/assets/streamlit_test.gif)
+- [Streamlit App](https://share.streamlit.io/ray-zapata/project_classification_phishing/main/webpage.py)
 
 ### II. Project Summary
 ---
