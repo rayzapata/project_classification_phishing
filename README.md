@@ -1,5 +1,5 @@
-## Using URL Composition to Predict Phishing Attempts
----
+Using URL Composition to Predict Phishing Attempts
+===
 
 ![](https://github.com/ray-zapata/project_classification_phishing/blob/main/assets/logo.jpg)
 

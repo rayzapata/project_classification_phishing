@@ -17,6 +17,8 @@ from sklearn.ensemble import RandomForestClassifier
 
 # import streamlit
 import streamlit as st
+import streamlit.components.v1 as components
+from bokeh.models.widgets import Div
 
 
 #################### Fit Data ####################
@@ -129,7 +131,10 @@ def get_num_sensitive_words(hostname, path, query):
     
     # create list of senstive words
     word_list = ['secure', 'account', 'login', 'password', 'api',
-                 'signin', 'banking', 'secured', 'safe', 'webscr']
+                 'signin', 'banking', 'secured', 'safe', 'webscr',
+                 'logon', 'inloggen', 'register', 'webhost', 'pay',
+                 'payment', 'dollar', 'shop', 'signon', 'net-acc', 
+                 'acc', 'finance', 'dns', 'host']
     # set zero for initial count
     count = 0
     # split path into format to count words
@@ -138,7 +143,7 @@ def get_num_sensitive_words(hostname, path, query):
     # create loop to count occurence of senstive words in hostname
     for sub in sub_host:
         for word in word_list:
-            if sub.__contains__(word):
+            if sub.lower().__contains__(word):
                 count+= 1
     # split path into format to count words
     sub_path = path.split(sep=(r'./1234567890`~!@#$%^&*()-_=+;:,<>\|\'"'),
@@ -146,7 +151,7 @@ def get_num_sensitive_words(hostname, path, query):
     # create loop to count occurence of sensitive words in path
     for sub in sub_path:
         for word in word_list:
-            if sub.__contains__(word):
+            if sub.lower().__contains__(word):
                 count+= 1
     # split query into format to count words
     sub_query = query.split(sep=(r'./1234567890`~!@#$%^&*()-_=+;:,<>\|\'"'),
@@ -154,7 +159,7 @@ def get_num_sensitive_words(hostname, path, query):
     # create loop to count occurence of sensitive words in queries
     for sub in sub_query:
         for word in word_list:
-            if sub.__contains__(word):
+            if sub.lower().__contains__(word):
                 count+= 1
     num_sensitive_words = count
     
@@ -237,14 +242,36 @@ def predict_url_input():
     if pred == 0:
         st.text(f'The URL provided is predicted {prob[0][0]:.0%} likely to be \
 legitimate.')
+        if prob[0][0] >= 0.75:
+            st.text('The URL doesn\'t seem suspicious, but use your best judgment.')
+        elif prob[0][0] >= 0.5:
+            st.text('Feels pretty safe, but proceed with care.')
     else:
         st.text(f'The URL provided is {prob[0][1]:.0%} suspected of being \
 illegitimate')
+        if prob[0][1] >= 0.75:
+            st.text('No good waits on the other side of this.')
+        elif prob[0][1] >= 0.5:
+            st.text('Best be cautious and not visit this site.')
 
 
 #################### Begin Web Portal Interface ####################
 
-st.title('&nbsp;&nbsp;&nbsp;Is the URL a phishing attempt? Check!')
+# set header title and image
+st.title('&nbsp;&nbsp;Is the URL a phishing attempt? Check! *')
 st.image('https://raw.githubusercontent.com/ray-zapata/project_classification_phishing/main/assets/logo.jpg')
 
+# begin function
 predict_url_input()
+
+# page breaks
+components.html('')
+components.html('')
+components.html('')
+
+#disclaimer
+st.text('* For Entertainment Purposes Only')
+
+# github repo link
+link = '[GitHub](https://github.com/ray-zapata/project_classification_phishing)'
+st.markdown(link, unsafe_allow_html=True)
