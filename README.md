@@ -9,6 +9,7 @@ Using URL Composition to Predict Phishing Attempts
 I.   [Project Overview             ](#i-project-overview)
 1.   [Description                  ](#1-description)
 2.   [Deliverables                 ](#2-deliverables)
+2.   [Web App                      ](#3-web-app)
 
 II.  [Project Summary              ](#ii-project-summary)
 1.   [Goals                        ](#1-goals)
@@ -49,6 +50,8 @@ One of the biggest internal problems with any company relying on electronic comm
 - Trello [board](https://trello.com/b/Zl97PmXz/phishing-classification) demonstrating process and planning
 - This [README](#using-url-composition-to-predict-phishing-attempts) containing project summary, goals, and findings
 - Project summary for résumé and portfolio
+
+#### 3. Web App
 
 In addition to the above deliverables, a web app was created to demonstrate how effective the classifier could be in the field. This is a simple proof of concept, and with additional time may be expanded on to use domains known to be used in phishing schemes. This does not serve as a layer of protection, and should in no way be used as secruity measure.
 
