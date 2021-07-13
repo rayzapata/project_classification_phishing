@@ -73,7 +73,7 @@ def explore_clusters(df, col_list, k=2):
     # store centers
     center_df = cluster_df.groupby('cluster')[col_list].mean()
     
-    return cluster_df, center_df, kmeans
+    return cluster_df, center_df
 
 
 #################### Visualize Data ####################
@@ -436,7 +436,7 @@ def create_clusters(train, validate, test, col_list, cluster_name, k=2):
     test[f'{cluster_name}_clstr'] = kmeans.predict(test_scaled)
     test = pd.get_dummies(test, columns=[f'{cluster_name}_clstr'], drop_first=True)
     
-    return train, validate, test
+    return train, validate, test, kmeans
 
 
 def select_kbest(X, y, k=1, score_func=f_regression):

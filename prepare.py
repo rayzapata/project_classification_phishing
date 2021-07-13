@@ -10,6 +10,7 @@ from scipy.stats import zscore
 
 from sklearn.model_selection import train_test_split
 from sklearn.impute import SimpleImputer
+import pickle
 
 
 #################### Prepare Data ####################
@@ -59,3 +60,25 @@ def split_xy(train, validate, test, target):
 
     return X_train, y_train, X_validate, y_validate, X_test, y_test
 
+
+#################### Data Pickler ####################
+
+
+def make_pickles(item, filename):
+    '''
+    '''
+
+    pickle_out = open(filename, 'wb')
+    pickle.dump(item, pickle_out)
+    pickle_out.close()
+
+
+def open_pickles(filename):
+    '''
+    '''
+
+    pickle_in = open(filename, 'rb')
+    open_jar = pickle.load(pickle_in)
+    pickle_in.close()
+
+    return open_jar

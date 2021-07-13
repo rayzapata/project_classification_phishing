@@ -66,6 +66,7 @@ def wrangle_phishing():
                 'AtSymbol':'has_at_symbol',
                 'TildeSymbol':'has_tilde',
                 'NumUnderscore':'num_underscore_url',
+                'NumPercent':'num_percent_sign',
                 'NumQueryComponents':'num_queries',
                 'NumAmpersand':'num_ampersand',
                 'NumHash':'num_hash',
