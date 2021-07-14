@@ -80,7 +80,7 @@ With additional time, it would be worthwhile to use analysis of the web page HTM
 ### III. Data Context
 ---
 
-The data utilized throughout this project was acquired from [Kaggle](https://www.kaggle.com/shashwatwork/phishing-dataset-for-machine-learning). This data was collected by [*Choon Lin Tan*](https://data.mendeley.com/datasets/h3cgnj8hft/1) and prepared for machine learning by Kaggle user *Shashwat Tiwari*. The data has been prepared in a manner that makes significant acquire and preparation unnecessary; however, much of the initial data will be unused to achieve the goals of this project.
+The data utilized throughout this project was acquired from [Kaggle](https://www.kaggle.com/shashwatwork/phishing-dataset-for-machine-learning). This data was collected by [*Choon Lin Tan*](https://data.mendeley.com/datasets/h3cgnj8hft/1) and prepared for machine learning by Kaggle user *Shashwat Tiwari*. The data has been prepared in a manner that makes significant preparation unnecessary; however, much of the initial data will be unused to achieve the goals of this project.
 
 #### Data Dictionary
 
