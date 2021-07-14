@@ -53,7 +53,7 @@ One of the biggest internal problems with any company relying on electronic comm
 
 #### 3. Web App
 
-In addition to the above deliverables, a web app was created to demonstrate how effective the classifier could be in the field. This is a simple proof of concept, and with additional time may be expanded on to use domains known to be used in phishing schemes. This does not serve as a layer of protection, and should in no way be used as secruity measure.
+In addition to the above deliverables, a web app was created to demonstrate how effective the classifier could be in the field. This is a simple proof of concept, and with additional time may be expanded on to use domains known to be used in phishing schemes. This does not serve as a layer of protection, and should in no way be used as security measure.
 
 - [Streamlit App](https://share.streamlit.io/ray-zapata/project_classification_phishing/main/webapp.py)
 
@@ -66,16 +66,16 @@ The goal of this project is to create a classification model that is capable of 
 
 #### 2. Initial Thoughts & Hypothesis
 
-In the initial phases of this project, the working hypotheses were that the URL length in would be a strong feature in predicting phishing attempts. The count of special characters, such as dots . and hyphens -, was also considered to be a strong driver in this endeaver due to anecdotal evidence suggesting phishing attempts more frequently make use of subdomains and high path levels to mask the underlying hostname as a legitimate source (i.e. `http://https.apple.com.nz/apple-id/login/-password/%amp;2993/ref?q=dds99kdjf`).
+In the initial phases of this project, the working hypotheses were that the URL length in would be a strong feature in predicting phishing attempts. The count of special characters, such as dots . and hyphens -, was also considered to be a strong driver in this endeavor due to anecdotal evidence suggesting phishing attempts more frequently make use of subdomains and high path levels to mask the underlying hostname as a legitimate source (i.e. `http://https.apple.com.nz/apple-id/login/-password/%amp;2993/ref?q=dds99kdjf`).
 
 #### 3. Findings & Next Phase
 
 There would prove to be some legitimacy to the above hypotheses, as modeling would utilize recommended features that included these special characters as well as the path level. It was also found that by using clustering methodology to create groupings based on the number of dots to the number of dashes showed statistically significant sample means different from the population mean using analysis of variance (ANOVA) testing.
 
 In modeling, the most successfully train fitted model was a random forest model that produced results which capture over 90%
-of positive class for the target is_phishing_attempt. This model maintained an above 78% overall accuracy throughout creation, evaluation, and testing. The strongest drivers for determining if a URL was a phishing attempt were: num_dash_url, num_dot_url, num_numerics, num_queries, num_sensitive_words, path_length, path_level, query_length, url_char_length, and dash_dot_clstr_2. These features were selected through recursive feature elimination using the RandomForestClassifier as the model.
+of positive class for the target `is_phishing_attempt`. This model maintained an above 78% overall accuracy throughout creation, evaluation, and testing. The strongest drivers for determining if a URL was a phishing attempt were: `num_dash_url`, `num_dot_url`, `num_numerics`, `num_queries`, `num_sensitive_words`, `path_length`, `path_level`, `query_length`, `url_char_length`, and `dash_dot_clstr_2`. These features were selected through recursive feature elimination using the RandomForestClassifier as the model.
 
-With additional time, it would be worthwhile to use analysis of the web page HTML to find any frequent elements common among illegitimate links. For the purpose of internal security, in actual application a machine dedicate to rendering the pages in question would be the best course of action to prevent shadow installation of common malware or other malicious software.
+With additional time, it would be worthwhile to use analysis of the web page HTML to find any frequent elements common among illegitimate links. For the purpose of internal security, in actual application a machine dedicated to rendering the pages in question would be the best course of action to prevent shadow installation of common malware or other malicious software.
 
 ### III. Data Context
 ---
@@ -88,7 +88,7 @@ Following acquisition of CSV from Kaggle, linked above, the DataFrames used in t
 
 | Variable              | Definition                                         | Data Type |
 |:---------------------:|:--------------------------------------------------:|:---------:|
-| dash_dot_clstr_#      | cluster created for number of dash to dots in URL  |   uint8   |
+| dash_dot_clstr_#      | cluster created for count of dash to dots in URL   |   uint8   |
 | domain_in_path        | boolean if domain is in path                       |   int64   |
 | domain_in_subdomain   | boolean if domain is also in subdomain             |   int64   |
 | has_random_string     | boolean if URL has a string of random values       |   int64   |
