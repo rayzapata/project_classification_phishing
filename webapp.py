@@ -278,6 +278,7 @@ st.markdown(link, unsafe_allow_html=True)
 
 #disclaimer
 st.text('''
-* For entertainment purposes only, does not claim to prevent
-  or treat any computer illness or ensure personal security.
+* For entertainment purposes only.
+  Makes no claim in preventing or treating any computer illness.
+  You are your own advocate in personal internet security.
   ''')
