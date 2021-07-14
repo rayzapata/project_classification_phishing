@@ -133,7 +133,8 @@ def get_num_sensitive_words(hostname, path, query):
                  'signin', 'banking', 'secured', 'safe', 'webscr',
                  'logon', 'inloggen', 'register', 'webhost', 'pay',
                  'payment', 'dollar', 'shop', 'signon', 'net-acc', 
-                 'acc', 'finance', 'dns', 'host']
+                 'acc', 'finance', 'dns', 'host', 'manage', 'client',
+                 'bank', 'mastercard', 'visa', 'amex', 'credit']
     # set zero for initial count
     count = 0
     # split path into format to count words
