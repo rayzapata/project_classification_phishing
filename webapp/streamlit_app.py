@@ -5,13 +5,6 @@
 import pandas as pd
 import numpy as np
 
-# import create functions
-import sys, os
-sys.path.append(os.path.abspath("../"))
-from acquire import wrangle_phishing
-from prepare import split_xy
-from explore import create_clusters
-
 # import parse, scaler, model
 from urllib.parse import urlparse
 from sklearn.preprocessing import StandardScaler
@@ -21,6 +14,13 @@ from sklearn.ensemble import RandomForestClassifier
 import streamlit as st
 import streamlit.components.v1 as components
 from bokeh.models.widgets import Div
+
+# import created functions
+import sys, os
+sys.path.append(os.path.abspath("../"))
+from acquire import wrangle_phishing
+from prepare import split_xy
+from explore import create_clusters
 
 
 #################### Fit Data ####################
