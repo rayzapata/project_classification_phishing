@@ -49,7 +49,6 @@ One of the biggest internal problems with any company relying on electronic comm
 - Jupyter [notebook](https://nbviewer.jupyter.org/github/ray-zapata/project_classification_phishing/blob/main/phishing_report.ipynb) containing findings, summary, and process through data science pipeline
 - Trello [board](https://trello.com/b/Zl97PmXz/phishing-classification) demonstrating process and planning
 - This [README](#using-url-composition-to-predict-phishing-attempts) containing project summary, goals, and findings
-- Project summary for résumé and portfolio
 
 #### 3. Web App
 
@@ -66,14 +65,14 @@ The goal of this project is to create a classification model that is capable of 
 
 #### 2. Initial Thoughts & Hypothesis
 
-In the initial phases of this project, the working hypotheses were that the URL length in would be a strong feature in predicting phishing attempts. The count of special characters, such as dots . and hyphens -, was also considered to be a strong driver in this endeavor due to anecdotal evidence suggesting phishing attempts more frequently make use of subdomains and high path levels to mask the underlying hostname as a legitimate source (i.e. `http://https.apple.com.nz/apple-id/login/-password/%amp;2993/ref?q=dds99kdjf`).
+In the initial phases of this project, the working hypotheses were that the URL length in would be a strong feature in predicting phishing attempts. The count of special characters, such as dots `.` and hyphens `-`, was also considered to be a strong driver in this endeavor due to anecdotal evidence suggesting phishing attempts more frequently make use of subdomains and high path levels to mask the underlying hostname as a legitimate source (i.e. `http://https.apple.com.nz/apple-id/login/-password/%amp;2993/ref?q=dds99kdjf`)
 
 #### 3. Findings & Next Phase
 
 There would prove to be some legitimacy to the above hypotheses, as modeling would utilize recommended features that included these special characters as well as the path level. It was also found that by using clustering methodology to create groupings based on the number of dots to the number of dashes showed statistically significant sample means different from the population mean using analysis of variance (ANOVA) testing.
 
 In modeling, the most successfully train fitted model was a random forest model that produced results which capture over 90%
-of positive class for the target `is_phishing_attempt`. This model maintained an above 78% overall accuracy throughout creation, evaluation, and testing. The strongest drivers for determining if a URL was a phishing attempt were: `num_dash_url`, `num_dot_url`, `num_numerics`, `num_queries`, `num_sensitive_words`, `path_length`, `path_level`, `query_length`, `url_char_length`, and `dash_dot_clstr_2`. These features were selected through recursive feature elimination using the RandomForestClassifier as the model.
+of positive class for the target `is_phishing_attempt`. This model maintained an above 86% overall accuracy throughout creation, evaluation, and testing. The strongest drivers for determining if a URL was a phishing attempt were: `num_dash_url`, `num_dot_url`, `num_numerics`, `num_queries`, `num_sensitive_words`, `path_length`, `path_level`, `query_length`, `url_char_length`, and `dash_dot_clstr_2`. These features were selected through recursive feature elimination using the RandomForestClassifier as the model.
 
 With additional time, it would be worthwhile to use analysis of the web page HTML to find any frequent elements common among illegitimate links. For the purpose of internal security, in actual application a machine dedicated to rendering the pages in question would be the best course of action to prevent shadow installation of common malware or other malicious software.
 
@@ -173,10 +172,10 @@ Following acquisition of CSV from Kaggle, linked above, the DataFrames used in t
 
 The created modules used in this project below contain full comments an docstrings to better understand their operation. Where applicable, all functions used `random_state=19` at all times.
 
-- [`acquire`](https://raw.githubusercontent.com/ray-zapata/project_classification_phishing/main/acquire.py): contains functions used in initial data acquisition leading into the prepare phase
-- [`prepare`](https://raw.githubusercontent.com/ray-zapata/project_classification_phishing/main/prepare.py): contains functions used to prepare data for exploration and visualization
-- [`explore`](https://raw.githubusercontent.com/ray-zapata/project_classification_phishing/main/explore.py): contains functions to visualize the prepared data and estimate the best drivers of property value
-- [`model`  ](https://raw.githubusercontent.com/ray-zapata/project_classification_phishing/main/model.py): contains functions to create, test models and visualize their performance
+- [`acquire.py`](https://raw.githubusercontent.com/ray-zapata/project_classification_phishing/main/acquire.py): contains functions used in initial data acquisition leading into the prepare phase
+- [`prepare.py`](https://raw.githubusercontent.com/ray-zapata/project_classification_phishing/main/prepare.py): contains functions used to prepare data for exploration and visualization
+- [`explore.py`](https://raw.githubusercontent.com/ray-zapata/project_classification_phishing/main/explore.py): contains functions to visualize the prepared data and estimate the best drivers of property value
+- [`model.py`  ](https://raw.githubusercontent.com/ray-zapata/project_classification_phishing/main/model.py): contains functions to create, test models and visualize their performance
 
 ### VI. Project Reproduction
 ---
