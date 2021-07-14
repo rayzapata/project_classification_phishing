@@ -6,6 +6,8 @@ import pandas as pd
 import numpy as np
 
 # import create functions
+import sys, os
+sys.path.append(os.path.abspath("../"))
 from acquire import wrangle_phishing
 from prepare import split_xy
 from explore import create_clusters
